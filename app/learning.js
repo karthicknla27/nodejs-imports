@@ -115,17 +115,7 @@ app.delete("/trainees/:id", (request, response) => {
     response.send(trainees);
   }
 });
-app.delete("/trainees/:id", (request, response) => {
-  const accountId = Number(request.params.id);
-  let newtrainees = trainees.filter((account) => account.id != accountId);
 
-  if (!newtrainees) {
-    response.status(500).send("Account not found.");
-  } else {
-    trainees = newtrainees;
-    response.send(trainees);
-  }
-});
 app.delete("/trainees", (request, response) => {
   const accountname = String(request.query.id);
   let newtrainees = trainees.filter((account) => account.id != accountname);
