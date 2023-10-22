@@ -126,6 +126,17 @@ app.delete("/trainees/:id", (request, response) => {
     response.send(trainees);
   }
 });
+app.delete("/trainees", (request, response) => {
+  const accountname = String(request.query.id);
+  let newtrainees = trainees.filter((account) => account.id != accountname);
+
+  if (!newtrainees) {
+    response.status(500).send("Account not found.");
+  } else {
+    trainees = newtrainees;
+    response.send(trainees);
+  }
+});
 
 app.listen(config.port, () => {
   console.log(`Server running on port ${config.port}`);
